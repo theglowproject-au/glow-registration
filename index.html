@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>G.L.O.W. | Course Registration</title>
+  <style>
+    :root { color-scheme:light; --ink:#243831; --muted:#64766f; --green:#326b55; --line:#dce7df; --cream:#f6f8f2; --light:#ebf3eb; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.55; background:linear-gradient(135deg,#e9f1e8,#f9f7ef 70%); color:var(--ink); }
+    .wrap { max-width:820px; margin:45px auto; padding:0 18px 45px; }
+    main { background:white; border:1px solid #e6e9e3; border-radius:20px; box-shadow:0 15px 50px #23443113; overflow:hidden; }
+    header { text-align:center; padding:45px 24px 32px; background:radial-gradient(circle at 50% 0,#e2efe0,#f9fbf6 75%); }
+    .eyebrow { font-size:.76rem; letter-spacing:.22em; font-weight:700; color:var(--green); }
+    h1 {font-family:Georgia,serif;font-size:clamp(2.3rem,7vw,3.6rem);font-weight:500;letter-spacing:.07em;margin:8px 0 0;}
+    .motto {margin:0;color:var(--muted);font-size:.92rem;}
+    h2 {font-family:Georgia,serif;font-weight:500;font-size:1.55rem;margin:0 0 10px;}
+    .intro { max-width:540px; margin:18px auto 0; color:#45574f; }
+    section {padding:28px clamp(20px,5vw,47px);border-top:1px solid var(--line);}
+    .step {display:inline-block;text-transform:uppercase;letter-spacing:.13em;font-size:.73rem;color:var(--green);font-weight:800;margin-bottom:8px;}
+    .note {background:var(--cream);padding:16px;border-radius:12px;font-size:.93rem;margin:15px 0 22px;}
+    label {display:block;font-weight:650;margin-bottom:7px;}
+    input {width:100%;border:1.5px solid #b7c9bd;border-radius:11px;padding:14px 15px;font-size:16px;color:var(--ink);background:white;}
+    input:focus {outline:3px solid #cbe5d4;border-color:#498363;}
+    .help {color:var(--muted);font-size:.88rem;margin:8px 0;}
+    .suggestions {border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:6px;}
+    .suggestions:empty {display:none;}
+    .suggestions button {display:block;width:100%;border:0;border-bottom:1px solid var(--line);background:#fff;color:var(--ink);padding:13px 15px;text-align:left;cursor:pointer;font:inherit;}
+    .suggestions button:last-child {border-bottom:0;}
+    .suggestions button:hover,.suggestions button:focus {background:var(--light);}
+    .action {appearance:none;background:var(--green);color:white;border:0;border-radius:10px;padding:14px 21px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:15px;}
+    .action:disabled {opacity:.46;cursor:not-allowed;}
+    .status {min-height:24px;margin:12px 0 0;color:#476c55;font-size:.91rem;}
+    .status.error {color:#a13a35;}
+    .summary {margin:15px 0;padding:15px;border-radius:12px;background:var(--light);white-space:pre-line;}
+    #formStep[hidden],#formSummary[hidden] {display:none;}
+    .frame {width:100%;height:1250px;border:1px solid var(--line);border-radius:11px;background:white;}
+    .fine {font-size:.79rem;color:var(--muted);}
+    a {color:#225d47;}
+    footer {text-align:center;color:var(--muted);font-size:.78rem;margin:22px auto;}
+    @media(max-width:600px) {.wrap {margin:0;padding:0;}main {border-radius:0;} .frame {height:1350px;} header {padding-top:34px;}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <main>
+    <header>
+      <div class="eyebrow">GROW · LEARN · OVERCOME · WALK</div>
+      <h1>G.L.O.W.</h1>
+      <p class="motto">Course Registration</p>
+      <p class="intro">A welcoming place to explore the Bible, ask questions and grow together. We're glad you're here.</p>
+    </header>
+    <section>
+      <span class="step">Step 1 of 2</span>
+      <h2>Find your address</h2>
+      <p>We request your residential address to help coordinate classes and activities for participants in different areas.</p>
+      <div class="note">Your address will be passed to our registration form. Please review the details before submitting. If you live in a unit or apartment, you can enter the unit number in the form separately.</div>
+      <label for="addressInput">Residential street address <span aria-hidden="true">*</span></label>
+      <input id="addressInput" type="text" autocomplete="off" placeholder="Start typing a street number and street name" aria-controls="suggestions" aria-describedby="addressHelp status">
+      <div id="addressHelp" class="help">Select a suggestion with street number, suburb, state and postcode. Australian addresses only.</div>
+      <div id="suggestions" class="suggestions" aria-label="Address suggestions"></div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div id="formSummary" class="summary" hidden></div>
+      <button id="continueBtn" class="action" type="button" disabled>Continue to registration</button>
+      <p class="fine">Address suggestions powered by <a href="https://www.geoapify.com/" target="_blank" rel="noopener noreferrer">Geoapify</a>.</p>
+    </section>
+    <section id="formStep" hidden>
+      <span class="step">Step 2 of 2</span>
+      <h2>Complete your registration</h2>
+      <p>Your existing Tally form appears below. Enter your form password when prompted and check that your address fields are populated. Unit or apartment number is optional.</p>
+      <p class="fine">If the form is blank after signing in, use <a id="directLink" href="https://tally.so/r/8NLV6o" target="_blank" rel="noopener noreferrer">open pre-filled form in a new tab</a>. If the fields still remain empty, the Tally default-answer mapping or password flow needs checking.</p>
+      <iframe id="tallyFrame" class="frame" title="G.L.O.W. course registration" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+  </main>
+  <footer>G.L.O.W. · Course Registration</footer>
+</div>
+<script>
+(() => {
+  // Replace only the value below. Never post your key in chat.
+  const GEOAPIFY_KEY = "73572a6104e0420f9a10d565ac34d777";
+  const TALLY_ID = "8NLV6o";
+  const input = document.querySelector('#addressInput');
+  const suggestions = document.querySelector('#suggestions');
+  const status = document.querySelector('#status');
+  const button = document.querySelector('#continueBtn');
+  const summary = document.querySelector('#formSummary');
+  const formStep = document.querySelector('#formStep');
+  let selected = null, timer = null, controller = null, requestNum = 0;
+  function message(txt, isError=false) {status.textContent=txt;status.classList.toggle('error',isError);}
+  function resetChoice() {
+    selected = null; button.disabled = true; summary.hidden=true;
+    formStep.hidden=true; document.querySelector('#tallyFrame').removeAttribute('src');
+  }
+  function components(p) {
+    const streetNumber = String(p.housenumber || '').trim();
+    const streetName = String(p.street || '').trim();
+    const suburb = String(p.city || p.town || p.village || p.suburb || p.county || '').trim();
+    const state = String(p.state_code || p.state || '').trim();
+    const postcode = String(p.postcode || '').trim();
+    const australian = String(p.country_code || '').toLowerCase() === 'au';
+    const valid = australian && streetNumber && streetName && suburb && state && /^\d{4}$/.test(postcode);
+    return valid ? {
+      fullAddress: String(p.formatted || [streetNumber,streetName,suburb,state,postcode].join(' ')),
+      street: `${streetNumber} ${streetName}`, suburb, state, postcode
+    } : null;
+  }
+  input.addEventListener('input', () => {
+    requestNum++;
+    clearTimeout(timer); controller?.abort(); resetChoice();
+    suggestions.replaceChildren();
+    const query = input.value.trim();
+    message('');
+    if (query.length < 4) return;
+    if (GEOAPIFY_KEY.startsWith('PASTE_')) {
+      message('Website setup incomplete: Geoapify API key has not been added.',true); return;
+    }
+    const thisRequest = requestNum;
+    timer = setTimeout(async () => {
+      controller = new AbortController();
+      const url = new URL('https://api.geoapify.com/v1/geocode/autocomplete');
+      url.searchParams.set('text', query);
+      url.searchParams.set('filter','countrycode:au');
+      url.searchParams.set('format','json');
+      url.searchParams.set('limit','7');
+      url.searchParams.set('apiKey',GEOAPIFY_KEY);
+      message('Searching addresses…');
+      try {
+        const response=await fetch(url,{signal:controller.signal});
+        if (!response.ok) throw new Error(`Geoapify request returned ${response.status}`);
+        const data=await response.json();
+        if (thisRequest !== requestNum || input.value.trim() !== query) return;
+        suggestions.replaceChildren();
+        const matches=(data.results||[]).filter(components);
+        if (!matches.length) {message('No complete street addresses found. Try adding the street number, suburb or postcode.',true);return;}
+        for (const p of matches) {
+          const option=document.createElement('button');
+          option.type='button';
+          option.textContent=p.formatted || components(p).fullAddress;
+          option.addEventListener('click',()=>{
+            selected=components(p);
+            input.value=selected.fullAddress;
+            suggestions.replaceChildren();
+            summary.textContent=`Street: ${selected.street}\nSuburb: ${selected.suburb}\nState: ${selected.state}\nPostcode: ${selected.postcode}`;
+            summary.hidden=false;
+            message('Complete Australian address selected.');
+            button.disabled=false;
+          });
+          suggestions.appendChild(option);
+        }
+        message('Choose your address from the suggestions.');
+      } catch (error) {
+        if (error.name!=='AbortError' && thisRequest===requestNum)
+          message('Address search is unavailable. Check the Geoapify key, website restrictions, and usage quota.',true);
+      }
+    },450);
+  });
+  button.addEventListener('click',()=>{
+    if (!selected) return;
+    const url=new URL(`https://tally.so/embed/${TALLY_ID}`);
+    const direct=new URL(`https://tally.so/r/${TALLY_ID}`);
+    for (const [key,value] of Object.entries(selected)) {
+      url.searchParams.set(key,value);
+      direct.searchParams.set(key,value);
+    }
+    url.searchParams.set('transparentBackground','1');
+    document.querySelector('#tallyFrame').src=url.toString();
+    document.querySelector('#directLink').href=direct.toString();
+    formStep.hidden=false;
+    button.disabled=true;
+    input.disabled=true;
+    formStep.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script>
+</body>
+</html>
