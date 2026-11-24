@@ -69,8 +69,15 @@
     <section id="formStep" hidden>
       <span class="step">Step 2 of 2</span>
       <h2>Complete your registration</h2>
-      <p>Your existing Tally form appears below. Enter your form password when prompted and check that your address fields are populated. Unit or apartment number is optional.</p>
-      <p class="fine">If the form is blank after signing in, use <a id="directLink" href="https://tally.so/r/8NLV6o" target="_blank" rel="noopener noreferrer">open pre-filled form in a new tab</a>. If the fields still remain empty, the Tally default-answer mapping or password flow needs checking.</p>
+      <p>
+  You're almost there! Please complete the registration
+  form below to begin your G.L.O.W. journey.
+</p>
+<p>
+  Your selected address has been carried over from the
+  previous step. Please review your details before submitting.
+  If applicable, enter your unit or apartment number.
+</p>
       <iframe id="tallyFrame" class="frame" title="G.L.O.W. course registration" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </section>
   </main>
@@ -79,7 +86,7 @@
 <script>
 (() => {
   // Replace only the value below. Never post your key in chat.
-  const GEOAPIFY_KEY = "73572a6104e0420f9a10d565ac34d777";
+  const GEOAPIFY_KEY = "ae62d73c4460481eb0905e1e9b0234b9";
   const TALLY_ID = "8NLV6o";
   const input = document.querySelector('#addressInput');
   const suggestions = document.querySelector('#suggestions');
